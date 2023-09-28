@@ -19,13 +19,13 @@ while True:
 
 # Calculate the total experience
 if end_date >= start_date:
-    total_years = end_date.year - start_date.year
-    total_months = end_date.month - start_date.month
-    total_days = end_date.day - start_date.day + 1
+    total_days = (end_date - start_date).days
+    total_years = total_days // 365
+    total_months = (total_days % 365) // 30
+    total_days = total_days % 30
 else:
-    total_years = end_date.year - start_date.year - 1
-    total_months = 12 - start_date.month + end_date.month
-    total_days = end_date.day - start_date.day + 1
+    print("End date cannot be before the start date.")
+    exit(1)
 
 # Output the total experience
 print(f"Total Professional Experience: {total_years} years, {total_months} months, and {total_days} days.")
