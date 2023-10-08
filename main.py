@@ -1,5 +1,12 @@
 from datetime import datetime
 
+# Function to pluralize a word based on the count
+def pluralize(count, singular, plural):
+    if count == 1:
+        return f"{count} {singular}"
+    else:
+        return f"{count} {plural}"
+
 # Input start date and current date with error handling
 while True:
     try:
@@ -28,4 +35,6 @@ else:
     exit(1)
 
 # Output the total experience
-print(f"Total Professional Experience: {total_years} years, {total_months} months, and {total_days} days.")
+print(f"Total Professional Experience: {pluralize(total_years, 'year', 'years')}, "
+      f"{pluralize(total_months, 'month', 'months')}, and "
+      f"{pluralize(total_days, 'day', 'days')}.")
