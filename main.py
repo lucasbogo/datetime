@@ -1,4 +1,5 @@
 from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 # Function to pluralize a word based on the count
 def pluralize(count, singular, plural):
@@ -24,12 +25,12 @@ while True:
     except ValueError:
         print("Invalid date format. Please enter the date in the format YYYY-MM-DD.")
 
-# Calculate the total experience
+# Calculate the total experience using relativedelta
 if end_date >= start_date:
-    total_days = (end_date - start_date).days
-    total_years = total_days // 365
-    total_months = (total_days % 365) // 30
-    total_days = total_days % 30
+    delta = relativedelta(end_date, start_date)
+    total_years = delta.years
+    total_months = delta.months
+    total_days = delta.days
 else:
     print("End date cannot be before the start date.")
     exit(1)
